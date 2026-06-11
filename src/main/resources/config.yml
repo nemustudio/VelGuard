@@ -1,10 +1,31 @@
 alert-ops: true
+vl-decay-per-second: 0.5
 
 checks:
   fly:
-    air-tick-limit: 20
+    max-air-events: 20
+    vl-per-flag: 2.5
+    vl-alert: 5.0
+    vl-punish: 15.0
+    punish-command: "kick {player} [VelGuard] Fly detected."
   speed:
-    violation-limit: 5
     base-max: 0.56
+    vl-per-flag: 1.5
+    vl-alert: 6.0
+    vl-punish: 20.0
+    punish-command: "kick {player} [VelGuard] Speed detected."
   killaura:
-    min-interval-ms: 55
+    max-cps: 16
+    vl-per-flag: 3.0
+    vl-alert: 5.0
+    vl-punish: 18.0
+    punish-command: "kick {player} [VelGuard] Combat modifications detected."
+  reach:
+    max-distance: 3.2
+    vl-per-flag: 2.0
+    vl-alert: 4.0
+    vl-punish: 12.0
+    punish-command: "kick {player} [VelGuard] Extended reach detected."
+  no-fall:
+    vl-per-flag: 3.0
+    vl-alert: 3.0

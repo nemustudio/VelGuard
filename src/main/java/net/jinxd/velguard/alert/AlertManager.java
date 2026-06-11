@@ -30,12 +30,16 @@ public class AlertManager {
         this.logFile = new File(plugin.getDataFolder(), "alerts.log");
     }
 
-    public void flag(Player player, CheckType type, String detail) {
-        String rich = PREFIX + "<gray>" + player.getName()
+    public void flag(Player player, CheckType type, String detail, double vl) {
+        String rich = PREFIX
+            + "<gray>" + player.getName()
             + " <dark_gray>» <yellow>" + type.getDisplayName()
-            + " <dark_gray>| <white>" + detail;
+            + " <dark_gray>| <white>" + detail
+            + " <dark_gray>(<red>vl:" + String.format("%.1f", vl) + "<dark_gray>)";
+
         String plain = "[" + LocalDateTime.now().format(DATE_FMT) + "] ["
-            + type.name() + "] " + player.getName() + " - " + detail;
+            + type.name() + "] " + player.getName()
+            + " - " + detail + " (vl:" + String.format("%.1f", vl) + ")";
 
         staffManager.getAll().forEach((uuid, name) -> {
             Player p = Bukkit.getPlayer(uuid);

@@ -28,7 +28,7 @@ public class VelTestCommand implements CommandExecutor {
         }
 
         if (args.length < 2) {
-            sender.sendMessage(mm.deserialize(PREFIX + "<gray>Usage: <white>/veltest <fly|speed|nofall|killaura|all> <player>"));
+            sender.sendMessage(mm.deserialize(PREFIX + "<gray>Usage: <white>/veltest <fly|speed|nofall|killaura|reach|all> <player>"));
             return true;
         }
 
@@ -39,15 +39,17 @@ public class VelTestCommand implements CommandExecutor {
         }
 
         switch (args[0].toLowerCase()) {
-            case "fly"      -> alertManager.flag(target, CheckType.FLY, "airTicks=25 [TEST]");
-            case "speed"    -> alertManager.flag(target, CheckType.SPEED, "dist=0.842 max=0.560 vl=5 [TEST]");
-            case "nofall"   -> alertManager.flag(target, CheckType.NO_FALL, "fall=12.0 [TEST]");
-            case "killaura" -> alertManager.flag(target, CheckType.KILL_AURA, "cps~22 delta=44ms yaw=2.3 [TEST]");
+            case "fly"      -> alertManager.flag(target, CheckType.FLY,       "air=25 [TEST]", 5.0);
+            case "speed"    -> alertManager.flag(target, CheckType.SPEED,     "dist=0.842 max=0.560 [TEST]", 6.0);
+            case "nofall"   -> alertManager.flag(target, CheckType.NO_FALL,   "fall=12.0 [TEST]", 3.0);
+            case "killaura" -> alertManager.flag(target, CheckType.KILL_AURA, "cps=22 yaw=2.3 [TEST]", 5.0);
+            case "reach"    -> alertManager.flag(target, CheckType.REACH,     "dist=4.21 max=3.26 [TEST]", 4.0);
             case "all" -> {
-                alertManager.flag(target, CheckType.FLY, "airTicks=25 [TEST]");
-                alertManager.flag(target, CheckType.SPEED, "dist=0.842 max=0.560 vl=5 [TEST]");
-                alertManager.flag(target, CheckType.NO_FALL, "fall=12.0 [TEST]");
-                alertManager.flag(target, CheckType.KILL_AURA, "cps~22 delta=44ms yaw=2.3 [TEST]");
+                alertManager.flag(target, CheckType.FLY,       "air=25 [TEST]", 5.0);
+                alertManager.flag(target, CheckType.SPEED,     "dist=0.842 max=0.560 [TEST]", 6.0);
+                alertManager.flag(target, CheckType.NO_FALL,   "fall=12.0 [TEST]", 3.0);
+                alertManager.flag(target, CheckType.KILL_AURA, "cps=22 yaw=2.3 [TEST]", 5.0);
+                alertManager.flag(target, CheckType.REACH,     "dist=4.21 max=3.26 [TEST]", 4.0);
             }
             default -> {
                 sender.sendMessage(mm.deserialize(PREFIX + "<red>Unknown type: <white>" + args[0]));
