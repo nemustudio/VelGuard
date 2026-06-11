@@ -1,0 +1,27 @@
+name: VelGuard
+version: '1.1.2'
+main: net.jinxd.velguard.VelGuard
+api-version: '1.21'
+authors:
+  - Jin_xD
+description: Lightweight movement and combat detection for Paper servers.
+
+commands:
+  antistaff:
+    description: Manage who receives VelGuard alerts
+    usage: /antistaff <add|remove|list> [player]
+    permission: velguard.staff
+    permission-message: You don't have permission.
+  veltest:
+    description: Trigger a test alert
+    usage: /veltest <fly|speed|nofall|killaura|all> <player>
+    permission: velguard.test
+    permission-message: You don't have permission.
+
+permissions:
+  velguard.staff:
+    description: Manage VelGuard alert recipients
+    default: op
+  velguard.test:
+    description: Send test alerts
+    default: op

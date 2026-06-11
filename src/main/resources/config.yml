@@ -1,0 +1,10 @@
+alert-ops: true
+
+checks:
+  fly:
+    air-tick-limit: 20
+  speed:
+    violation-limit: 5
+    base-max: 0.56
+  killaura:
+    min-interval-ms: 55
