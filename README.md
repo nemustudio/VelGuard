@@ -111,3 +111,4 @@ Output: `target/velguard-1.1.2.jar`
 ## License
 
 MIT — see [LICENSE](LICENSE)
+made by jin_xd
